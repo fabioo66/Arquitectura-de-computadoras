@@ -23,7 +23,9 @@ daddi r4, r0, 4
 ;ME GUARDO LOS ESTADOS 
 
 mtc1 r5, f4 ;me guardo el 25 en f4
+cvt.d.l f4, f4
 mtc1 r6, f5 ;me guardo el 30 en f5
+cvt.d.l f5, f5
 l.d f6, dieciocho (r0) ;me guardo el 18.5 en f6 
 
 c.lt.d f3, f6 

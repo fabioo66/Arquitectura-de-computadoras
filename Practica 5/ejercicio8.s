@@ -12,7 +12,7 @@ halt
 
 compara: dadd $v0, $zero, $zero
 loop: lbu $t0, 0($a0) ;me guardo el elemento actual de cadena1
-lbu $t1, 0($a0) ;me guardo el elemento actual de cadena2
+lbu $t1, 0($a1) ;me guardo el elemento actual de cadena2
 beqz $t0, fin_a0
 beqz $t1, final
 bne $t0, $t1, final ;si no son iguales salto para finalizar el programa
@@ -20,8 +20,8 @@ daddi $a0, $a0, 1
 daddi $a1, $a1, 1
 j loop
 fin_a0: bnez $t1, final
-daddi $v0, $0, 1
+daddi $v0, $0, -1
 j final
 fin_a1: bnez $t0, final
-daddi $v0, $0, 1
+daddi $v0, $0, -1
 final: jr $ra

@@ -6,24 +6,27 @@ res: .word 0
 daddi $sp, $zero, 0x400
 daddi $a0, $zero, cadena
 jal CONTAR_VOC
-sd $v1, res($zero)
+sd $v0, res($zero)
 halt
  
-CONTAR_VOC: daddi $sp, $sp, -16 ; Reserva lugar en la pila -> 2 x 8
+CONTAR_VOC: daddi $sp, $sp, -24 ; Reserva lugar en la pila -> 3 x 8
 sd $ra, 0($sp)
 sd $s0, 8($sp)
+sd $s1, 16($sp)
 DADD $s0, $a0, $zero ; copia la direccion de inicio de la cadena
-dadd $v1, $zero, $zero
+dadd $s1, $zero, $zero
 loop: lbu $a0, 0($s0)
 beq $a0, $zero, final
 jal ES_VOCAL
 beqz $v0, seguir
-daddi $v1, $v1, 1
+daddi $s1, $s1, 1
 seguir: daddi $s0, $s0, 1
 j loop
-final: ld $ra, 0($sp)
+final: dadd $v0, $zero, $s1 
+ld $ra, 0($sp)
 ld $s0, 8($sp)
-daddi $sp, $sp, 16
+ld $s1, 16($sp)
+daddi $sp, $sp, 24
 jr $ra
 
 ES_VOCAL: dadd $v0, $zero, $zero

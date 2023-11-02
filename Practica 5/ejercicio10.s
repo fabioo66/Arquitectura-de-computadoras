@@ -16,7 +16,7 @@ sd $s1, 16($sp)
 DADD $s0, $a0, $zero ; copia la direccion de inicio de la cadena
 dadd $s1, $zero, $zero
 loop: lbu $a0, 0($s0)
-beqz $a0 final
+beqz $a0, final
 jal ES_VOCAL
 beqz $v0, seguir
 daddi $s1, $s1, 1

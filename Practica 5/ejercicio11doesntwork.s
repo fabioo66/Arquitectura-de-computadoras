@@ -29,6 +29,5 @@ ld $s1, 16($sp)
 daddi $sp, $sp, 24
 jr $ra
 
-ES_IMPAR: daddi $t0, $zero, 1
-and $v0, $t0, $a0
+ES_IMPAR: andi $v0, $a0, 1
 jr $ra

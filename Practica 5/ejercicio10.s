@@ -1,5 +1,5 @@
 .data
-cadena: .asciiz "QUIERO LA SEPTIMA"
+cadena: .asciiz "CAVANI FORRO"
 res: .word 0
 
 .code
